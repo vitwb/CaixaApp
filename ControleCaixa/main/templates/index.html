@@ -6,7 +6,7 @@
   <div class="container">
     <div class="p-2 row justify-content-center">
   
-      <button type="button" class="m-1 col btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#Criar">Criar Caixa</button>
+      <button type="button" class="m-1 col btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#Criar">Criar Empréstimo</button>
       <button type="button" class="m-1 col btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#Receber">Receber Caixa</button>
     </div>
     
@@ -15,11 +15,13 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Criar Caixa</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Criar Empréstimo</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ...
+            
+            <div id="reader" width="600px"></div>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -37,7 +39,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ...
+            <div id="reader" width="600px"></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -49,7 +51,7 @@
 
     <div class="row">
       
-      <div class="card  col-sm">
+      <div class="card  col-lg">
         <div class="card-header">
           <ul class="nav nav-pills card-header-pills">
             <h2>Caixas Emprestadas</h2>
@@ -71,10 +73,10 @@
             <tbody>
               {% for CaixaCliente in CaixaClientes%}
               <tr>
-                <th scope="row">1</th>
-                <td>{{CaixaCliente.idCliente}}</td>
-                <td>{{CaixaCliente.idCaixa}}</td>
-                <td>dia</td>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{CaixaCliente.idCliente.nomeCliente}}</td>
+                <td>{{CaixaCliente.idCaixa.codCaixa}}</td>
+                <td>{{CaixaCliente.dataEmprestimo}}</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -83,7 +85,7 @@
         </div>
       </div>
   
-      <div class="card  col-sm">
+      <div class="card  col-lg">
         <div class="card-header">
           <ul class="nav nav-pills card-header-pills">
             <h2>Caixas</h2>
@@ -104,9 +106,9 @@
             <tbody>
               {% for Caixa in Caixas%}
               <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{ forloop.counter }}</th>
                 <td>{{Caixa.codCaixa}}</td>
-                <td>dia</td>
+                <td>{{Caixa.dataCadastroCaixa}}</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -115,7 +117,7 @@
         </div>
       </div>
 
-      <div class="card  col-sm">
+      <div class="card  col-lg">
         <div class="card-header">
           <ul class="nav nav-pills card-header-pills">
             <h2>Clientes</h2>
@@ -136,9 +138,9 @@
             <tbody>
               {% for Cliente in Clientes%}
               <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{ forloop.counter }}</th>
                 <td>{{Cliente.nomeCliente}}</td>
-                <td>dia</td>
+                <td>{{Cliente.dataCadastroCliente}}</td>
               </tr>
               {% endfor %}
             </tbody>
