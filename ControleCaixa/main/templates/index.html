@@ -6,7 +6,7 @@
   <div class="container">
     <div class="p-2 row justify-content-center">
   
-      <button type="button" class="m-1 col btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#Criar">Criar Empréstimo</button>
+      <button id ="CriarButton"type="button" class="m-1 col btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#Criar">Criar Empréstimo</button>
       <button type="button" class="m-1 col btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#Receber">Receber Caixa</button>
     </div>
     
@@ -16,11 +16,12 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Criar Empréstimo</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
           </div>
           <div class="modal-body">
             
             <div id="reader" width="600px"></div>
+            <a id="resultado"></a>
 
           </div>
           <div class="modal-footer">
@@ -39,7 +40,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div id="reader" width="600px"></div>
+            <div id="reader2" width="600px"></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
