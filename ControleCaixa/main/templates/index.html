@@ -3,16 +3,161 @@
 
   
   {% block content %}
+  <div class="container">
+    <div class="p-2 row justify-content-center">
+  
+      <button id ="CriarButton"type="button" class="m-1 col btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#Criar">Criar Empréstimo</button>
+      <button type="button" class="m-1 col btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#Receber">Receber Caixa</button>
+    </div>
+    
+<!-- Modal criar caixa -->
+    <div class="modal fade" id="Criar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Criar Empréstimo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+          </div>
+          <div class="modal-body">
+            
+            <div id="reader" width="600px"></div>
+            <a id="resultado"></a>
 
-  <div class="container-fluid pb-3">
-    <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr;">
-      <div class="bg-light border rounded-3">
-        <br><br><br><br><br><br><br><br><br><br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
       </div>
-      <div class="bg-light border rounded-3">
-        <br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <!-- Modal receber -->
+    <div class="modal fade" id="Receber" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Receber Caixa</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="reader2" width="600px"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      
+      <div class="card  col-lg">
+        <div class="card-header">
+          <ul class="nav nav-pills card-header-pills">
+            <h2>Caixas Emprestadas</h2>
+            
+          </ul>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Caixa</th>
+                <th scope="col">Dia Emprestimo</th>
+
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for CaixaCliente in CaixaClientes%}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{CaixaCliente.idCliente.nomeCliente}}</td>
+                <td>{{CaixaCliente.idCaixa.codCaixa}}</td>
+                <td>{{CaixaCliente.dataEmprestimo}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+  
+      <div class="card  col-lg">
+        <div class="card-header">
+          <ul class="nav nav-pills card-header-pills">
+            <h2>Caixas</h2>
+            
+          </ul>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Caixa</th>
+                <th scope="col">Dia Emprestimo</th>
+
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for Caixa in Caixas%}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{Caixa.codCaixa}}</td>
+                <td>{{Caixa.dataCadastroCaixa}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+      <div class="card  col-lg">
+        <div class="card-header">
+          <ul class="nav nav-pills card-header-pills">
+            <h2>Clientes</h2>
+            
+          </ul>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Dia Cadastro</th>
+
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for Cliente in Clientes%}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{Cliente.nomeCliente}}</td>
+                <td>{{Cliente.dataCadastroCliente}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+      
+  
+  
+  
+  
+  
+       
       </div>
     </div>
   </div>
-
   {% endblock %}
