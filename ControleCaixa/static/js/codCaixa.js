@@ -5,8 +5,6 @@ document.getElementById("NovaCaixa").onclick = function autoFill() {
   }
 
 function novoClientefun (){
-  
-  
   document.getElementById("codcliente").value = generatePassword(4) ;
 
 }
