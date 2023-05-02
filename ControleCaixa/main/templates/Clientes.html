@@ -1,17 +1,41 @@
 {% extends "base.html" %} 
 
-
+{% block title %}Clientes{% endblock %}
   
   {% block content %}
   <div class="container">
-    <div class="p-2 row justify-content-center">
+    <div class="p-2 d-grid gap-2 d-md-flex justify-content-md-end">
   
-      <button id ="CriarButton"type="button" class="m-1 col btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#Criar">Criar Empréstimo</button>
-      <button type="button" class="m-1 col btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#Receber">Receber Caixa</button>
+      <button id='Novocliente' type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#AdicionarCliente">Adicionar novo cliente</button>
     </div>
     
-<!-- Modal criar caixa -->
-    <div class="modal fade" id="Criar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+<!-- Modal criar Cliente -->
+ 
+<div class="modal fade" id="AdicionarCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Novo Cliente</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action ="{% url 'clientes'%}" method ="post">
+        {% csrf_token %}
+        <h6>Nome do Cliente:</h6>
+        <input type="text" id="nomecliente" name="nomecliente"></input>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+   
+<div class="modal fade" id="Criar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -55,72 +79,6 @@
       <div class="card  col-lg">
         <div class="card-header">
           <ul class="nav nav-pills card-header-pills">
-            <h2>Caixas Emprestadas!</h2>
-            
-          </ul>
-        </div>
-        <div class="card-body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Cliente</th>
-                <th scope="col">Caixa</th>
-                <th scope="col">Dia Emprestimo</th>
-
-              </tr>
-            </thead>
-
-            <tbody>
-              {% for CaixaCliente in CaixaClientes%}
-              <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td>{{CaixaCliente.idCliente.nomeCliente}}</td>
-                <td>{{CaixaCliente.idCaixa.codCaixa}}</td>
-                <td>{{CaixaCliente.dataEmprestimo}}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-
-        </div>
-      </div>
-  
-      <div class="card  col-lg">
-        <div class="card-header">
-          <ul class="nav nav-pills card-header-pills">
-            <h2>Caixas</h2>
-            
-          </ul>
-        </div>
-        <div class="card-body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Caixa</th>
-                <th scope="col">Dia Emprestimo</th>
-
-              </tr>
-            </thead>
-
-            <tbody>
-              {% for Caixa in Caixas%}
-              <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td>{{Caixa.codCaixa}}</td>
-                <td>{{Caixa.dataCadastroCaixa}}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-
-        </div>
-      </div>
-
-      <div class="card  col-lg">
-        <div class="card-header">
-          <ul class="nav nav-pills card-header-pills">
             <h2>Clientes</h2>
             
           </ul>
@@ -132,6 +90,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Dia Cadastro</th>
+                <th scope="col">QR</th>
 
               </tr>
             </thead>
@@ -142,6 +101,15 @@
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{Cliente.nomeCliente}}</td>
                 <td>{{Cliente.dataCadastroCliente}}</td>
+                <td><img src={{Cliente.qr_code_cl.url}}></td>
+                <td>
+                  
+                  <a type="button" href="{% url 'deleteCliente' Cliente.id %}"  class="btn btn-outline-danger">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
+                  </svg>
+                 
+                </a></td>
               </tr>
               {% endfor %}
             </tbody>
@@ -150,14 +118,7 @@
         </div>
       </div>
 
-      
-  
-  
-  
-  
-  
-       
       </div>
     </div>
   </div>
-  {% endblock %}
+{% endblock %}

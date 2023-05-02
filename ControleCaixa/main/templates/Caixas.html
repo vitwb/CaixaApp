@@ -1,0 +1,84 @@
+{% extends "base.html" %} 
+
+
+  
+  {% block content %}
+  <div class="container">
+    <div class="p-2 d-grid gap-2 d-md-flex justify-content-md-end">
+  
+      <button id='NovaCaixa' type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#AdicionarCaixa">Adicionar nova caixa</button>
+    </div>
+    
+<!-- Modal criar caixa -->
+ 
+<div class="modal fade" id="AdicionarCaixa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nova Caixa</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action ="{% url 'caixas'%}" method ="post">
+        {% csrf_token %}
+        <h6>Código da Caixa:</h6>
+        <input type="text" id="nomecaixa" name="nomecaixa"></input>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="row">
+      
+     
+  
+      <div class="card  col-lg">
+        <div class="card-header">
+          <ul class="nav nav-pills card-header-pills">
+            <h2>Caixas</h2>
+            
+          </ul>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Caixa</th>
+                <th scope="col">Data de cadastro</th>
+
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for Caixa in Caixas%}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{Caixa.codCaixa}}</td>
+                <td>{{Caixa.dataCadastroCaixa}}</td>
+                <td>
+                  
+                  <a type="button" href="{% url 'delete-Caixa' Caixa.id %}"  class="btn btn-outline-danger">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
+                  </svg>
+                 
+                </a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+     
+      </div>
+    </div>
+  </div>
+  {% endblock %}
