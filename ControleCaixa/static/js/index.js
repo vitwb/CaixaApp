@@ -6,7 +6,7 @@ function onScanSuccess(decodedText, decodedResult) {
   
   var elem = document.getElementById("reader");
   elem.remove();
-  console.log("OSS");
+  
   document.getElementById('resultado').innerHTML=`<a>"${decodedText}"</a>`
   html5QrcodeScanner.clear();
 }

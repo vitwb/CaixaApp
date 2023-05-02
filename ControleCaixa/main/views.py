@@ -24,6 +24,7 @@ def caixas(request):
        
         codCaixa = request.POST.get('nomecaixa',None)
         caixa = Caixa(codCaixa=codCaixa)
+        
         caixa.save()
         
        
@@ -39,7 +40,9 @@ def clientes(request):
 
     elif request.method =="POST":
         Clientes = request.POST.get('nomecliente',None)
-        Clienteobj = Cliente(nomeCliente=Clientes)
+        codCliente = request.POST.get('codcliente',None)
+        
+        Clienteobj = Cliente(nomeCliente=Clientes, codCliente = codCliente)
         Clienteobj.save()
         
         return HttpResponseRedirect('clientes')

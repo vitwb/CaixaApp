@@ -6,7 +6,7 @@
   <div class="container">
     <div class="p-2 d-grid gap-2 d-md-flex justify-content-md-end">
   
-      <button id='Novocliente' type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#AdicionarCliente">Adicionar novo cliente</button>
+      <button onclick="novoClientefun()" id='Novocliente'  type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#AdicionarCliente">Adicionar novo cliente</button>
     </div>
     
     
@@ -24,6 +24,8 @@
         {% csrf_token %}
         <h6>Nome do Cliente:</h6>
         <input type="text" id="nomecliente" name="nomecliente"></input>
+        <h6>Código do Cliente:</h6>
+        <input type="text" id="codcliente" name="codcliente"></input>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -101,7 +103,7 @@
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{Cliente.nomeCliente}}</td>
                 <td>{{Cliente.dataCadastroCliente}}</td>
-                <td><img src={{Cliente.qr_code_cl.url}}></td>
+                <td><img width="100 " height="100"  src={{Cliente.qr_code_cl.url}}></td>
                 <td>
                   
                   <a type="button" href="{% url 'deleteCliente' Cliente.id %}"  class="btn btn-outline-danger">

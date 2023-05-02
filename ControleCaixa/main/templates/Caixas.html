@@ -51,7 +51,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Caixa</th>
                 <th scope="col">Data de cadastro</th>
-
+                <th scope="col">QR</th>
               </tr>
             </thead>
 
@@ -61,6 +61,7 @@
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{Caixa.codCaixa}}</td>
                 <td>{{Caixa.dataCadastroCaixa}}</td>
+                <td><img  width="100 " height="100"src={{Caixa.qr_code_cx.url}}></td>
                 <td>
                   
                   <a type="button" href="{% url 'delete-Caixa' Caixa.id %}"  class="btn btn-outline-danger">
