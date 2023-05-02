@@ -8,9 +8,9 @@ from . import views
 
 urlpatterns = [
     path('',views.main,name="main"),
+    path('qr',views.qr,name="qr"),
     path('caixas',views.caixas,name="caixas"),
     path('clientes',views.clientes,name="clientes"),
-    path('emprestimo/<caixa_cod>/<cliente_cod>',views.emprestimo,name="emprestimo"),
     path('deleteCaixa/<caixa_id>',views.deleteCaixa,name="delete-Caixa"),
     path('deleteCliente/<cliente_id>',views.deleteCliente,name="deleteCliente"),
 ]

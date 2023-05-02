@@ -7,8 +7,9 @@ function onScanSuccess(decodedText, decodedResult) {
   var elem = document.getElementById("reader");
   
   
-  document.getElementById('resultado').innerHTML=`<a>"${decodedText}"</a>`
+  document.getElementById('Cod_Caixa').value= decodedText
   document.getElementById("html5-qrcode-button-camera-stop").click();
+  reader2();
   document.getElementById("resultado2").click();
 }
 
@@ -24,7 +25,7 @@ function onScanFailure(error) {
     var elem = document.getElementById("reader2");
     
     
-    document.getElementById('resultado2').innerHTML=`<a>"${decodedText}"</a>`
+    document.getElementById('Cod_Cliente').value= decodedText
     
     elem.getElementById("html5-qrcode-button-camera-stop").click();
    
@@ -37,7 +38,7 @@ function onScanFailure(error) {
     }
     
 
-function reader1 (){   
+  window.onload = function reader1 (){   
 
   const html5QrcodeScanner = new Html5QrcodeScanner(
     "reader",
@@ -48,7 +49,7 @@ function reader1 (){
 }
 
 
-function reader2 (){   
+function reader2(){   
 
   const html5QrcodeScanner2 = new Html5QrcodeScanner(
     "reader2",

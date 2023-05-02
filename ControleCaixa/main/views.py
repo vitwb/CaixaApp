@@ -61,10 +61,17 @@ def deleteCliente(request, cliente_id):
     Cleinte.delete()
     return redirect('clientes')
 
-def emprestimo(request, caixa_cod, cliente_cod):
-    Caixa = Caixa.objects.get(codCaixa=caixa_cod)
-    Cliente = Cliente.objects.get(codCliente=cliente_cod)
-    CaixaClienteobj = CaixaCliente(idCliente=Cliente.id, idCaixa = Caixa.id)
-    CaixaClienteobj.save()
+def qr(request):
+    if request.method =="GET":
+        return render(request,'qr-reader.html')
     
-    return redirect('main')
+    elif request.method =="POST":
+        cod_Caixa = request.POST.get('Cod_Caixa',None)
+        cod_Cliente = request.POST.get('Cod_Cliente',None)
+        Caixaobj = Caixa.objects.get(codCaixa=cod_Caixa)
+        Clienteobj = Cliente.objects.get(codCliente=cod_Cliente)
+        CaixaClienteobj = CaixaCliente(idCliente=Clienteobj, idCaixa = Caixaobj)
+        CaixaClienteobj.save()
+        
+        return redirect('main')
+

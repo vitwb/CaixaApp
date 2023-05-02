@@ -1,0 +1,46 @@
+{% extends "base.html" %} 
+
+
+
+{% block content %}
+<div class="container">
+    <form action ="{% url 'qr' %}" method ="post">
+        {% csrf_token %}
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Leitura código da CAIXA
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div id="reader" width="600px"></div>
+                    <input type="text" id="Cod_Caixa" name="Cod_Caixa"></input>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button id ="resultado2"class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Leitura código do CLIENTE
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div id="reader2" width="600px"></div>
+                  <input type="text" id="Cod_Cliente" name="Cod_Cliente"></input>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+    
+    
+    
+    </form>
+</div>
+{% endblock %}

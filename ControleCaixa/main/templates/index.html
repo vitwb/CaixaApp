@@ -6,63 +6,12 @@
   <div class="container">
     <div class="p-2 row justify-content-center">
   
-      <button onclick="reader1()" id ="CriarButton"type="button" class="m-1 col btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#Criar">Criar Empréstimo</button>
+      <a  href="qr" id ="CriarButton"type="button" class="m-1 col btn btn-success btn-lg">Criar Empréstimo</a>
       <button type="button" class="m-1 col btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#Receber">Receber Caixa</button>
     </div>
     
 <!-- Modal criar caixa -->
-    <div class="modal fade" id="Criar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Criar Empréstimo</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="accordion" id="accordionPanelsStayOpenExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button id="resultado" class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                    aria-controls="panelsStayOpen-collapseOne">
-                    Caixa
-                  </button>
-                </h2>
-                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-                  <div class="accordion-body">
-                    <div id="reader" width="600px"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button id="resultado2" onclick="reader2()" class="accordion-button collapsed" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-                    aria-controls="panelsStayOpen-collapseTwo">
-                    Cliente
-                  </button>
-                </h2>
-                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-                  <div class="accordion-body">
-                    <div id="reader2" width="600px"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-          </div>
-    
-    
-        
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary">Salvar</button>
-        </div>
-      </div>
-      </div>
-      </div>
-    </div>
+  
     <!-- Modal receber -->
     <div class="modal fade" id="Receber" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
