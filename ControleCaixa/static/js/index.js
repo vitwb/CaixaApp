@@ -4,9 +4,7 @@
 function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   
-  var elem = document.getElementById("reader");
-  
-  
+ 
   document.getElementById('Cod_Caixa').value= decodedText
   document.getElementById("html5-qrcode-button-camera-stop").click();
   reader2();

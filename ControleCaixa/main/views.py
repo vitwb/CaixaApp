@@ -73,5 +73,5 @@ def qr(request):
         CaixaClienteobj = CaixaCliente(idCliente=Clienteobj, idCaixa = Caixaobj)
         CaixaClienteobj.save()
         
-        return redirect('main')
+        return redirect('qr')
 
