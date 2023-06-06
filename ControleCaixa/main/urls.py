@@ -13,6 +13,7 @@ urlpatterns = [
     path('clientes',views.clientes,name="clientes"),
     path('deleteCaixa/<caixa_id>',views.deleteCaixa,name="delete-Caixa"),
     path('deleteCliente/<cliente_id>',views.deleteCliente,name="deleteCliente"),
+    
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

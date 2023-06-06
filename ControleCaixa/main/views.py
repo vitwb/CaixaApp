@@ -4,6 +4,7 @@ from main.forms import FormsCaixa
 from main.models import *
 # Create your views here.
 
+
 def main(request):
     Clientes = Cliente.objects.all()
     Caixas = Caixa.objects.all()
